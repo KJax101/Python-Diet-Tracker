@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Diet Tracker</title>
-    <script src="/static/v8foodtypes.js"></script>
+    <script src="/static/foodtypesv1.js"></script>
     <link rel="stylesheet" href="style.css" />
 
 </head>
@@ -17,7 +17,9 @@
         </form>
         <button id="addItem">Add Item</button>
         <ol id="foodList">
-            <li>{{value}}</li>
+            {% for each in foods %}
+                <li> {{ each }} </li>
+            {% endfor %}
         </ol>
     </div>
 </body>

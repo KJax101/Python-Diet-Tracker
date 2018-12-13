@@ -4,8 +4,7 @@ from flask import render_template
 import numpy as np
 
 # from routes import app_initializer
-
-
+sentfood = []
 # initialize the app
 app = Flask(__name__)
 # __name__ built into Python, grabbing the name of the main file
@@ -23,12 +22,13 @@ foods = {"carrot": np.array([60, 0, 58, 1, 1]),
 
 @app.route("/", methods=["GET", "POST"])
 def displayPage():
+    foodtype = ''
     if request.form:
         form = request.form.getlist("food")
-        value = form[0]
-        print(value)
-        return render_template("index.html", value=value)
-    return render_template("index.html")
+        foodtype = form[0]
+        sentfood.append(foodtype)
+    
+    return render_template("index.html", foods=sentfood)
 
 
 def calorieCalculator(foods):

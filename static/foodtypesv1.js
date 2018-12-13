@@ -29,6 +29,7 @@ window.onload = function () {
     fetch("/", { method: "POST", body: formdata }).then(function (res) {
       if (res.status === 200) {
         console.log(res);
+        window.location.href = '/';
       }
     });
   })
