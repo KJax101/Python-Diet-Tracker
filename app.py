@@ -21,8 +21,13 @@ foods = {"carrot": np.array([60, 0, 58, 1, 1]),
          "turkey": np.array([90, 5, 50, 18, 3])}
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def displayPage():
+    if request.form:
+        form = request.form.getlist("food")
+        value = form[0]
+        print(value)
+        return render_template("index.html", value=value)
     return render_template("index.html")
 
 
@@ -35,6 +40,10 @@ def formDataInput():
     form = request.form
     print(form)
     return "form"
+
+# @app.route("/additem", methods=["POST"])
+# def addItem():
+#     return render_template("index.html")
 
 
 # now we run the app
